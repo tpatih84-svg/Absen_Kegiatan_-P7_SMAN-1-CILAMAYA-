@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#07111f">
+<title>EXECUTOR OF TWELVE — P7 ABSENCE</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
+:root{--bg:#06101d;--panel:rgba(13,29,48,.78);--line:rgba(130,190,230,.17);--cyan:#65e6ff;--blue:#589bff;--muted:#8ba4ba;--white:#eaf7ff;--green:#75f0c0}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 50% -15%,#12385a 0%,transparent 48%),linear-gradient(145deg,#050b14,#081a2b 55%,#06101d);color:var(--white);font-family:Manrope,system-ui,sans-serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;background-image:linear-gradient(rgba(120,190,230,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(120,190,230,.07) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(to bottom,black,transparent 85%)}
+#particles{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}.particle{position:absolute;width:3px;height:3px;border-radius:50%;background:#79eaff;box-shadow:0 0 12px #65e6ff;opacity:0;animation:float var(--dur) linear infinite;animation-delay:var(--delay)}
+@keyframes float{0%{transform:translate3d(0,20px,0);opacity:0}15%{opacity:.55}85%{opacity:.2}100%{transform:translate3d(var(--drift),-110vh,0);opacity:0}}
+main{position:relative;z-index:1;width:min(1080px,calc(100% - 32px));margin:auto;padding:28px 0 50px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:58px}.brand{display:flex;align-items:center;gap:11px;font-size:11px;letter-spacing:2px;font-weight:800}.brandmark{width:35px;height:35px;border:1px solid #5fdfff66;border-radius:11px;display:grid;place-items:center;color:var(--cyan);box-shadow:0 0 22px #45dfff20;font-size:16px}.status{font:10px 'DM Mono',monospace;color:#9ec3d8;border:1px solid var(--line);border-radius:99px;padding:9px 12px;letter-spacing:1px}.status i{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 9px var(--green);margin-right:7px}
+.hero{text-align:center;max-width:760px;margin:0 auto 38px;animation:rise .8s both}.eyebrow{font:10px 'DM Mono',monospace;letter-spacing:4px;color:var(--cyan);text-transform:uppercase}.hero h1{font-size:clamp(35px,7vw,70px);line-height:1.02;letter-spacing:-3px;margin:17px 0 12px;font-weight:800}.hero h1 span{color:transparent;background:linear-gradient(100deg,#f2fbff 10%,#65e6ff 55%,#679bff);background-clip:text;-webkit-background-clip:text;text-shadow:0 0 45px #53dfff20}.hero p{margin:0;color:var(--muted);font-size:14px;line-height:1.8}.hero .sub{font:10px 'DM Mono',monospace;letter-spacing:2px;color:#63849d;margin-top:17px}
+@keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.layout{display:grid;grid-template-columns:.8fr 1.2fr;gap:18px;align-items:stretch}.side,.formcard{border:1px solid var(--line);background:linear-gradient(145deg,rgba(18,42,65,.82),rgba(7,20,34,.88));backdrop-filter:blur(18px);border-radius:22px;box-shadow:0 25px 80px #0005;overflow:hidden}.side{padding:25px;position:relative}.side:after{content:"";position:absolute;width:220px;height:220px;border-radius:50%;background:#1b9dc51b;filter:blur(55px);right:-100px;top:20px}.side-label{font:10px 'DM Mono',monospace;color:var(--cyan);letter-spacing:2px}.side h2{font-size:24px;line-height:1.3;margin:15px 0 10px}.side p{font-size:12px;line-height:1.8;color:var(--muted)}.steps{margin-top:30px;display:grid;gap:18px}.step{display:flex;gap:12px;align-items:flex-start}.num{flex:0 0 28px;height:28px;border:1px solid #65e6ff55;border-radius:9px;display:grid;place-items:center;color:var(--cyan);font:11px 'DM Mono',monospace}.step b{display:block;font-size:12px;margin:1px 0 4px}.step small{font-size:11px;color:var(--muted);line-height:1.5}.side-foot{border-top:1px solid var(--line);margin-top:28px;padding-top:17px;font:9px 'DM Mono',monospace;letter-spacing:1px;color:#7394aa}
+.formcard{padding:clamp(20px,4vw,34px)}.form-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}.form-head h3{font-size:17px;margin:0}.form-head span{font:9px 'DM Mono',monospace;color:var(--cyan);letter-spacing:1px}.progress{height:3px;background:#ffffff12;border-radius:9px;margin:0 0 25px;overflow:hidden}.progress div{height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--cyan));box-shadow:0 0 12px var(--cyan);transition:width .35s}
+label{display:block;font-size:11px;font-weight:700;margin:0 0 9px;color:#c9dce9}.field{margin-bottom:20px}input,select{width:100%;background:#071624;border:1px solid #29465d;border-radius:11px;padding:14px 14px;color:var(--white);font:13px Manrope;outline:none;transition:.25s}input:focus,select:focus{border-color:var(--cyan);box-shadow:0 0 0 3px #65e6ff12,0 0 20px #65e6ff0b}input::placeholder{color:#587187}select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2365e6ff' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 15px center}
+.upload{border:1px dashed #47718a;border-radius:14px;min-height:145px;display:grid;place-items:center;text-align:center;padding:17px;cursor:pointer;transition:.25s;background:#07172588}.upload:hover{border-color:var(--cyan);background:#0b2638}.upload input{display:none}.upload-icon{width:38px;height:38px;border:1px solid #65e6ff55;color:var(--cyan);border-radius:12px;display:grid;place-items:center;margin:0 auto 10px;font-size:18px}.upload strong{font-size:12px}.upload small{display:block;color:var(--muted);font-size:10px;margin-top:6px}.preview{display:none;max-width:100%;max-height:180px;border-radius:10px;margin:12px auto 0;object-fit:contain}.consent{display:flex;gap:10px;align-items:flex-start;font-size:10px;line-height:1.6;color:var(--muted);margin:6px 0 20px}.consent input{width:15px;height:15px;flex:0 0 15px;margin:1px 0;accent-color:#55dfff}.submit{width:100%;border:0;border-radius:11px;padding:15px;color:#04121c;background:linear-gradient(100deg,#69eaff,#73aaff);font:800 12px Manrope;letter-spacing:1px;cursor:pointer;box-shadow:0 8px 28px #45dfff25;transition:transform .2s,box-shadow .2s}.submit:hover{transform:translateY(-2px);box-shadow:0 12px 32px #45dfff45}.submit:active{transform:scale(.985)}.submit:disabled{opacity:.5;cursor:not-allowed;transform:none}.fineprint{text-align:center;color:#668398;font-size:9px;line-height:1.6;margin:14px 0 0}
+.timebox{display:flex;justify-content:space-between;gap:12px;border:1px solid var(--line);border-radius:10px;padding:11px 13px;margin-bottom:19px;color:var(--muted);font:10px 'DM Mono',monospace}.timebox strong{color:#d9f6ff;font-weight:500}
+.success{display:none;text-align:center;padding:35px 10px 22px;animation:rise .5s both;position:relative;overflow:hidden}
+.success-icon{width:72px;height:72px;margin:0 auto 20px;border:1px solid #75f0c077;border-radius:50%;display:grid;place-items:center;color:var(--green);font-size:32px;box-shadow:0 0 35px #75f0c022;animation:pulse 2s infinite}
+@keyframes pulse{50%{box-shadow:0 0 45px #75f0c055}}
+.success h2{font-size:26px;margin:0 0 8px}
+.success p{color:var(--muted);font-size:12px;line-height:1.8}
+.receipt{margin:20px auto;padding:14px;border:1px solid var(--line);border-radius:12px;max-width:330px;text-align:left;font:10px 'DM Mono',monospace;color:var(--muted);line-height:2}.receipt b{color:var(--white);font-weight:500}
+.again{margin-top:10px;background:transparent;border:1px solid #65e6ff66;color:var(--cyan);border-radius:10px;padding:12px 18px;font:11px Manrope;cursor:pointer}
+footer{text-align:center;color:#557187;font:9px 'DM Mono',monospace;letter-spacing:1px;margin-top:30px}
+@media(max-width:760px){main{padding-top:18px}.topbar{margin-bottom:42px}.layout{grid-template-columns:1fr}.side{order:2}.formcard{order:1}.side{padding:20px}.steps{grid-template-columns:1fr 1fr;gap:15px}.hero h1{letter-spacing:-2px}.hero p{font-size:12px}}
+@media(max-width:420px){.brand{font-size:9px;letter-spacing:1px}.status{font-size:8px}.steps{grid-template-columns:1fr}.timebox{font-size:9px}}
+
+/* ============ LOADING ANIMATION ============ */
+#loader{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;background:radial-gradient(ellipse at 50% 40%,#0d2a44 0%,#050b14 70%);transition:opacity .7s ease,visibility .7s ease}
+#loader.hide{opacity:0;visibility:hidden;pointer-events:none}
+.loader-inner{text-align:center;animation:rise .6s both}
+.loader-ring{position:relative;width:130px;height:130px;margin:0 auto 26px}
+.loader-ring::before,.loader-ring::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid transparent}
+.loader-ring::before{border-top-color:var(--cyan);border-right-color:var(--cyan);animation:spin 1s linear infinite}
+.loader-ring::after{border-bottom-color:var(--blue);border-left-color:var(--blue);inset:14px;animation:spin 1.6s linear infinite reverse}
+.loader-core{position:absolute;inset:30px;border-radius:50%;display:grid;place-items:center;color:var(--cyan);font:800 18px Manrope;letter-spacing:.5px;background:linear-gradient(145deg,#123b5c,#071624);border:1px solid #65e6ff44;box-shadow:0 0 30px #45dfff33,inset 0 0 20px #45dfff11;animation:beat 1.4s ease-in-out infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes beat{0%,100%{transform:scale(1);box-shadow:0 0 30px #45dfff33,inset 0 0 20px #45dfff11}50%{transform:scale(1.08);box-shadow:0 0 50px #45dfff66,inset 0 0 28px #45dfff22}}
+.loader-title{font:10px 'DM Mono',monospace;letter-spacing:4px;color:var(--cyan);text-transform:uppercase;margin-bottom:10px}
+.loader-text{font-size:13px;color:var(--muted);margin:0 0 18px;min-height:18px}
+.loader-bar{width:200px;height:3px;margin:0 auto;background:#ffffff12;border-radius:9px;overflow:hidden}
+.loader-bar div{height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--cyan));box-shadow:0 0 12px var(--cyan);animation:load 2.4s ease forwards}
+@keyframes load{0%{width:0}60%{width:78%}100%{width:100%}}
+.loader-dots{display:inline-flex;gap:4px;margin-left:2px;vertical-align:middle}
+.loader-dots i{width:4px;height:4px;border-radius:50%;background:var(--cyan);display:inline-block;animation:blink 1.2s infinite}
+.loader-dots i:nth-child(2){animation-delay:.2s}.loader-dots i:nth-child(3){animation-delay:.4s}
+@keyframes blink{0%,80%,100%{opacity:.2}40%{opacity:1}}
+
+/* ============ SEND ANIMATION ============ */
+#sendOverlay{position:fixed;inset:0;z-index:9998;display:none;place-items:center;background:rgba(4,10,18,.86);backdrop-filter:blur(6px)}
+#sendOverlay.show{display:grid}
+.send-inner{text-align:center;animation:rise .5s both}
+.send-plane-wrap{position:relative;width:120px;height:120px;margin:0 auto 24px}
+.send-pulse{position:absolute;inset:0;border-radius:50%;border:1px solid #65e6ff55;animation:sendPulse 1.8s ease-out infinite}
+.send-pulse:nth-child(2){animation-delay:.6s}
+.send-pulse:nth-child(3){animation-delay:1.2s}
+@keyframes sendPulse{0%{transform:scale(.5);opacity:.9}100%{transform:scale(1.8);opacity:0}}
+.send-plane{position:absolute;inset:0;display:grid;place-items:center;color:var(--cyan);filter:drop-shadow(0 0 14px #65e6ff88)}
+.send-plane svg{width:64px;height:64px;animation:planeFly 1.4s ease-in-out infinite}
+@keyframes planeFly{0%{transform:translate(-8px,8px) rotate(-8deg)}50%{transform:translate(6px,-6px) rotate(4deg)}100%{transform:translate(-8px,8px) rotate(-8deg)}}
+.send-text{font:10px 'DM Mono',monospace;letter-spacing:4px;color:var(--cyan);text-transform:uppercase;margin-bottom:8px}
+.send-msg{font-size:13px;color:var(--muted);margin:0 0 16px}
+.send-bar{width:180px;height:3px;margin:0 auto;background:#ffffff12;border-radius:9px;overflow:hidden}
+.send-bar div{height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--cyan));box-shadow:0 0 12px var(--cyan);animation:load 1.5s ease forwards}
+
+/* ============ SUCCESS CELEBRATION ============ */
+.success::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 50% 20%,#65e6ff1a 0%,transparent 60%)}
+#confettiLayer{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1}
+.confetti{position:absolute;top:-20px;width:8px;height:14px;opacity:0;border-radius:2px;animation:confettiFall var(--cdur) linear var(--cdelay) infinite}
+@keyframes confettiFall{0%{transform:translateY(-20px) rotate(0deg);opacity:0}10%{opacity:1}100%{transform:translateY(420px) rotate(720deg);opacity:0}}
+.thanks-badge{position:relative;z-index:2;display:inline-block;margin:0 auto 14px;padding:8px 18px;border-radius:99px;border:1px solid #75f0c077;background:linear-gradient(100deg,#75f0c01a,#65e6ff1a);font:10px 'DM Mono',monospace;letter-spacing:3px;color:var(--green);text-transform:uppercase;animation:badgePop .6s cubic-bezier(.2,1.4,.5,1) both}
+@keyframes badgePop{0%{transform:scale(.5);opacity:0}100%{transform:scale(1);opacity:1}}
+.success h2{position:relative;z-index:2;font-size:30px;margin:0 0 6px;letter-spacing:-.5px}
+.success h2 span{color:var(--cyan)}
+.success .subline{position:relative;z-index:2;color:#bcd9ea;font-size:13px;line-height:1.7;margin:0 0 6px;animation:rise .6s .2s both}
+.quote-box{position:relative;z-index:2;margin:16px auto 4px;max-width:360px;padding:14px 16px;border-radius:14px;border:1px dashed #65e6ff44;background:linear-gradient(145deg,#0b2334cc,#071624cc);font-size:12px;line-height:1.7;color:#d6ecf7;font-style:italic;animation:rise .6s .35s both}
+.quote-box::before{content:"“";position:absolute;top:-2px;left:10px;font:700 28px Manrope;color:var(--cyan);opacity:.35}
+.quote-box b{display:block;margin-top:8px;font-style:normal;font:10px 'DM Mono',monospace;color:var(--cyan);letter-spacing:2px;text-align:right}
+.stars{position:relative;z-index:2;margin:6px 0 2px;font-size:14px;letter-spacing:6px;color:#ffd66e;animation:rise .6s .5s both}
+.success-icon{animation:popCheck .7s cubic-bezier(.2,1.5,.5,1) both,pulse 2s 1s infinite}
+@keyframes popCheck{0%{transform:scale(0);opacity:0}70%{transform:scale(1.15)}100%{transform:scale(1);opacity:1}}
+.receipt{position:relative;z-index:2}
+</style>
+</head>
+<body>
+
+<!-- ===== LOADING ANIMATION ===== -->
+<div id="loader">
+  <div class="loader-inner">
+    <div class="loader-ring"><div class="loader-core">E12</div></div>
+    <div class="loader-title">QR VERIFIED</div>
+    <p class="loader-text" id="loaderText">Memverifikasi sesi<span class="loader-dots"><i></i><i></i><i></i></span></p>
+    <div class="loader-bar"><div></div></div>
+  </div>
+</div>
+
+<!-- ===== SEND ANIMATION ===== -->
+<div id="sendOverlay">
+  <div class="send-inner">
+    <div class="send-plane-wrap">
+      <div class="send-pulse"></div><div class="send-pulse"></div><div class="send-pulse"></div>
+      <div class="send-plane">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 2 11 13"></path><path d="M22 2 15 22l-4-9-9-4 20-7z"></path>
+        </svg>
+      </div>
+    </div>
+    <div class="send-text">TRANSMITTING</div>
+    <p class="send-msg" id="sendMsg">Mengirim konfirmasi kehadiran<span class="loader-dots"><i></i><i></i><i></i></span></p>
+    <div class="send-bar"><div></div></div>
+  </div>
+</div>
+
+<div id="particles"></div>
+<main>
+<header class="topbar">
+  <div class="brand"><div class="brandmark">E<span>✦</span></div><div>EXECUTOR <span style="color:var(--cyan)">/</span> TWELVE</div></div>
+  <div class="status"><i></i> P7 SYSTEM PREVIEW</div>
+</header>
+<section class="hero">
+  <div class="eyebrow">PROJECT 07 · DIGITAL ATTENDANCE</div>
+  <h1>EXECUTOR OF <span>TWELVE</span></h1>
+  <p>Satu langkah sederhana untuk mencatat kehadiran.<br>Isi data dengan benar, lalu kirim konfirmasi kehadiranmu.</p>
+  <div class="sub">PRECISION · RESPONSIBILITY · PARTICIPATION</div>
+</section>
+<section class="layout">
+  <aside class="side">
+    <div class="side-label">/// HOW IT WORKS</div>
+    <h2>Kehadiranmu,<br>tercatat dengan rapi.</h2>
+    <p>Gunakan sistem ini untuk mengisi presensi kegiatan P7. Pastikan informasi yang kamu masukkan sesuai.</p>
+    <div class="steps">
+      <div class="step"><div class="num">01</div><div><b>Isi identitas</b><small>Masukkan nama lengkap dan kelas.</small></div></div>
+      <div class="step"><div class="num">02</div><div><b>Ambil selfie</b><small>Gunakan kamera langsung untuk foto bukti.</small></div></div>
+      <div class="step"><div class="num">03</div><div><b>Kirim presensi</b><small>Periksa kembali sebelum mengirim.</small></div></div>
+      <div class="step"><div class="num">04</div><div><b>Simpan bukti</b><small>Lihat ringkasan konfirmasi setelah demo.</small></div></div>
+    </div>
+    <div class="side-foot">SECURE FLOW DESIGN · P7 / XII</div>
+  </aside>
+  <section class="formcard">
+    <div id="formArea">
+      <div class="form-head"><h3>Formulir Kehadiran</h3><span>STEP 01 — 03</span></div>
+      <div class="progress"><div id="progressBar"></div></div>
+      <form id="attendanceForm">
+        <div class="field"><label for="fullname">NAMA LENGKAP</label><input id="fullname" type="text" placeholder="Contoh: Reyhan Alexander" autocomplete="name" required minlength="3"></div>
+        <div class="field"><label for="classroom">KELAS</label><select id="classroom" required><option value="">Pilih kelas</option>
+          <option>X.1</option>
+          <option>X.2</option>
+          <option>X.3</option>
+          <option>X.4</option>
+          <option>X.5</option>
+          <option>X.6</option>
+          <option>X.7</option>
+          <option>X.8</option>
+          <option>X.9</option>
+          <option>X.10</option>
+          <option>X.11</option>
+          <option>X.12</option>
+          <option>XI.1</option>
+          <option>XI.2</option>
+          <option>XI.3</option>
+          <option>XI.4</option>
+          <option>XI.5</option>
+          <option>XI.6</option>
+          <option>XI.7</option>
+          <option>XI.8</option>
+          <option>XI.9</option>
+          <option>XI.10</option>
+          <option>XI.11</option>
+          <option>XI.12</option>
+          <option>XII.1</option><option>XII.2</option><option>XII.3</option><option>XII.4</option><option>XII.5</option><option>XII.6</option><option>XII.7</option><option>XII.8</option><option>XII.9</option><option>XII.10</option><option>XII.11</option><option>XII.12</option></select></div>
+        <div class="timebox"><span>WAKTU PERANGKAT</span><strong id="clock">--:--:--</strong></div>
+        <div class="field"><label>FOTO SELFIE BUKTI KEHADIRAN</label>
+          <label class="upload" for="photo"><input id="photo" type="file" accept="image/*" capture="user"><span id="uploadText"><span class="upload-icon">◎</span><strong>Ambil selfie sekarang</strong><small>Kamera depan · Foto menjadi bukti kehadiran</small></span><img class="preview" id="preview" alt="Pratinjau foto selfie"></label>
+        </div>
+        <label class="consent"><input id="agree" type="checkbox" required><span>Saya memastikan data yang diisi benar. Saya memahami bahwa foto selfie ini diambil untuk dokumentasi kegiatan P7 dan hanya digunakan sesuai persetujuan serta kebijakan resmi sekolah.</span></label>
+        <button class="submit" id="sendBtn" type="submit">KONFIRMASI KEHADIRAN <span>↗</span></button>
+        <p class="fineprint">DEMO FRONT-END · Data belum dikirim atau disimpan ke server.</p>
+      </form>
+    </div>
+    <div class="success" id="successArea">
+      <div id="confettiLayer"></div>
+      <div class="success-icon">✓</div>
+      <div class="thanks-badge">✦ TERIMA KASIH ✦</div>
+      <h2>Kehadiranmu <span>tercatat!</span></h2>
+      <p class="subline">Terima kasih sudah berpartisipasi dalam kegiatan P7.<br>Kehadiranmu adalah bagian dari kesuksesan kelas XII.</p>
+      <div class="quote-box" id="quoteBox">
+        "Kedisiplinan hari ini adalah investasi untuk masa depanmu."
+        <b>— P7 TEAM</b>
+      </div>
+      <div class="stars">★ ★ ★ ★ ★</div>
+      <div class="receipt" id="receipt"></div>
+      <button class="again" id="againBtn">KEMBALI KE FORMULIR</button>
+    </div>
+  </section>
+</section>
+<footer>EXECUTOR OF TWELVE · P7 ABSENCE · INTERFACE CONCEPT 02</footer>
+</main>
+
+<script>
+/* ---------- Particles ---------- */
+const particleRoot=document.getElementById('particles');
+for(let i=0;i<34;i++){
+  const p=document.createElement('i');
+  p.className='particle';
+  p.style.left=Math.random()*100+'%';
+  p.style.top=(40+Math.random()*80)+'%';
+  p.style.setProperty('--dur',(9+Math.random()*13)+'s');
+  p.style.setProperty('--delay',(-Math.random()*18)+'s');
+  p.style.setProperty('--drift',(Math.random()*100-50)+'px');
+  particleRoot.appendChild(p);
+}
+
+/* ---------- Clock ---------- */
+const clock=document.getElementById('clock');
+function updateClock(){clock.textContent=new Date().toLocaleString('id-ID',{dateStyle:'medium',timeStyle:'medium'})}
+updateClock();setInterval(updateClock,1000);
+
+/* ---------- LOADING ANIMATION ---------- */
+(function(){
+  const loader=document.getElementById('loader');
+  const loaderText=document.getElementById('loaderText');
+  const loadingSteps=['Memverifikasi sesi','Menyiapkan formulir presensi','Menyinkronkan waktu perangkat','Siap digunakan'];
+  let stepIdx=0;
+  let stepTimer=null;
+
+  stepTimer=setInterval(function(){
+    stepIdx++;
+    if(stepIdx<loadingSteps.length && loaderText){
+      loaderText.innerHTML=loadingSteps[stepIdx]+'<span class="loader-dots"><i></i><i></i><i></i></span>';
+    }
+  },700);
+
+  function hideLoader(){
+    if(stepTimer){clearInterval(stepTimer);stepTimer=null;}
+    if(loader && !loader.classList.contains('hide')){
+      loader.classList.add('hide');
+    }
+  }
+
+  setTimeout(hideLoader,2800);
+  setTimeout(hideLoader,4000); // safety fallback
+  loader && loader.addEventListener('click',hideLoader,{once:true});
+})();
+
+/* ---------- Form logic ---------- */
+const form=document.getElementById('attendanceForm');
+const photo=document.getElementById('photo');
+const preview=document.getElementById('preview');
+const uploadText=document.getElementById('uploadText');
+const progress=document.getElementById('progressBar');
+
+['fullname','classroom','photo','agree'].forEach(id=>{
+  document.getElementById(id).addEventListener('input',updateProgress);
+});
+
+function updateProgress(){
+  let n=0;
+  if(document.getElementById('fullname').value.trim().length>=3) n++;
+  if(document.getElementById('classroom').value) n++;
+  if(document.getElementById('agree').checked) n++;
+  progress.style.width=(n/3*100)+'%';
+}
+
+photo.addEventListener('change',()=>{
+  const file=photo.files[0];
+  if(!file) return;
+  if(file.size>5*1024*1024){alert('Ukuran foto melebihi 5 MB. Silakan ambil ulang selfie.');photo.value='';return}
+  if(!file.type.startsWith('image/')){alert('File harus berupa gambar.');photo.value='';return}
+  const reader=new FileReader();
+  reader.onload=e=>{
+    preview.src=e.target.result;
+    preview.style.display='block';
+    uploadText.innerHTML='<span class="upload-icon">✓</span><strong>Selfie berhasil diambil</strong><small>Ketuk untuk mengambil ulang</small>';
+  };
+  reader.readAsDataURL(file);
+});
+
+/* ---------- Escape HTML ---------- */
+function escapeHTML(s){
+  return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+/* ---------- Submit → Send Animation → Success ---------- */
+const sendOverlay=document.getElementById('sendOverlay');
+const sendMsg=document.getElementById('sendMsg');
+const sendSteps=['Mengirim konfirmasi kehadiran','Mengunggah foto selfie','Menyimpan timestamp','Finalisasi data'];
+
+form.addEventListener('submit',e=>{
+  e.preventDefault();
+  if(!form.reportValidity()) return;
+  if(!photo.files[0]){alert('Silakan ambil selfie terlebih dahulu sebagai bukti kehadiran.');return}
+
+  // tampilkan send animation
+  sendOverlay.classList.add('show');
+  sendMsg.innerHTML=sendSteps[0]+'<span class="loader-dots"><i></i><i></i><i></i></span>';
+  let sIdx=0;
+  const sTimer=setInterval(()=>{
+    sIdx++;
+    if(sIdx<sendSteps.length){
+      sendMsg.innerHTML=sendSteps[sIdx]+'<span class="loader-dots"><i></i><i></i><i></i></span>';
+    }
+  },420);
+
+  // setelah animasi selesai → tampilkan success celebration
+  setTimeout(()=>{
+    clearInterval(sTimer);
+    sendOverlay.classList.remove('show');
+
+    const name=document.getElementById('fullname').value.trim();
+    const cls=document.getElementById('classroom').value;
+    const stamp=new Date().toLocaleString('id-ID',{dateStyle:'full',timeStyle:'medium'});
+    document.getElementById('receipt').innerHTML=
+      'NAMA : <b>'+escapeHTML(name)+'</b><br>'+
+      'KELAS : <b>'+escapeHTML(cls)+'</b><br>'+
+      'WAKTU : <b>'+escapeHTML(stamp)+'</b><br>'+
+      'FOTO : <b>Selfie terlampir</b><br>'+
+      'STATUS : <b style="color:#75f0c0">TERKIRIM (SIMULASI)</b>';
+
+    // quote random
+    const quotes=[
+      {q:"Kedisiplinan hari ini adalah investasi untuk masa depanmu.",a:"P7 TEAM"},
+      {q:"Terima kasih sudah hadir. Kehadiranmu berarti besar untuk kelas kita.",a:"EXECUTOR OF TWELVE"},
+      {q:"Satu langkah kecil untuk hadir, satu langkah besar untuk masa depan.",a:"P7 COMMITTEE"},
+      {q:"Kamu keren sudah konsisten hadir. Terus jaga semangatnya!",a:"CLASS XII"},
+      {q:"Partisipasimu hari ini adalah cerita indah untuk dikenang nanti.",a:"P7 DIGITAL"},
+      {q:"Hebat! Tanggung jawabmu terhadap kehadiran patut diapresiasi.",a:"PANITIA P7"},
+      {q:"Jangan lupa istirahat, kamu sudah melakukan hal baik hari ini.",a:"EXECUTOR OF TWELVE"}
+    ];
+    const pick=quotes[Math.floor(Math.random()*quotes.length)];
+    document.getElementById('quoteBox').innerHTML='"'+pick.q+'"<b>— '+pick.a+'</b>';
+
+    // confetti
+    const layer=document.getElementById('confettiLayer');
+    layer.innerHTML='';
+    const colors=['#65e6ff','#75f0c0','#589bff','#ffd66e','#ffffff','#ff8fb1'];
+    for(let i=0;i<40;i++){
+      const c=document.createElement('i');
+      c.className='confetti';
+      c.style.left=(Math.random()*100)+'%';
+      c.style.background=colors[Math.floor(Math.random()*colors.length)];
+      c.style.setProperty('--cdur',(2.2+Math.random()*2.5)+'s');
+      c.style.setProperty('--cdelay',(Math.random()*2.5)+'s');
+      c.style.width=(5+Math.random()*6)+'px';
+      c.style.height=(8+Math.random()*10)+'px';
+      if(Math.random()>.5) c.style.borderRadius='50%';
+      layer.appendChild(c);
+    }
+
+    document.getElementById('formArea').style.display='none';
+    document.getElementById('successArea').style.display='block';
+    window.scrollTo({top:0,behavior:'smooth'});
+  },1800);
+});
+
+/* ---------- Reset ---------- */
+document.getElementById('againBtn').addEventListener('click',()=>{
+  form.reset();
+  preview.src='';preview.style.display='none';
+  uploadText.innerHTML='<span class="upload-icon">◎</span><strong>Ambil selfie sekarang</strong><small>Kamera depan · Foto menjadi bukti kehadiran</small>';
+  progress.style.width='0';
+  document.getElementById('confettiLayer').innerHTML='';
+  document.getElementById('successArea').style.display='none';
+  document.getElementById('formArea').style.display='block';
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+</script>
+</body>
+</html>

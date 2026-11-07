@@ -150,30 +150,8 @@ footer{text-align:center;color:#557187;font:9px 'DM Mono',monospace;letter-spaci
       <form id="attendanceForm">
         <div class="field"><label for="fullname">NAMA LENGKAP</label><input id="fullname" type="text" placeholder="Contoh: Reyhan Alexander" autocomplete="name" required minlength="3"></div>
         <div class="field"><label for="classroom">KELAS</label><select id="classroom" required><option value="">Pilih kelas</option>
-          <option>X.1</option>
-          <option>X.2</option>
-          <option>X.3</option>
-          <option>X.4</option>
-          <option>X.5</option>
-          <option>X.6</option>
-          <option>X.7</option>
-          <option>X.8</option>
-          <option>X.9</option>
-          <option>X.10</option>
-          <option>X.11</option>
-          <option>X.12</option>
-          <option>XI.1</option>
-          <option>XI.2</option>
-          <option>XI.3</option>
-          <option>XI.4</option>
-          <option>XI.5</option>
-          <option>XI.6</option>
-          <option>XI.7</option>
-          <option>XI.8</option>
-          <option>XI.9</option>
-          <option>XI.10</option>
-          <option>XI.11</option>
-          <option>XI.12</option>
+          <option>X.1</option><option>X.2</option><option>X.3</option><option>X.4</option><option>X.5</option><option>X.6</option><option>X.7</option><option>X.8</option><option>X.9</option><option>X.10</option><option>X.11</option><option>X.12</option>
+          <option>XI.1</option><option>XI.2</option><option>XI.3</option><option>XI.4</option><option>XI.5</option><option>XI.6</option><option>XI.7</option><option>XI.8</option><option>XI.9</option><option>XI.10</option><option>XI.11</option><option>XI.12</option>
           <option>XII.1</option><option>XII.2</option><option>XII.3</option><option>XII.4</option><option>XII.5</option><option>XII.6</option><option>XII.7</option><option>XII.8</option><option>XII.9</option><option>XII.10</option><option>XII.11</option><option>XII.12</option></select></div>
         <div class="timebox"><span>WAKTU PERANGKAT</span><strong id="clock">--:--:--</strong></div>
         <div class="field"><label>FOTO SELFIE BUKTI KEHADIRAN</label>
@@ -181,7 +159,7 @@ footer{text-align:center;color:#557187;font:9px 'DM Mono',monospace;letter-spaci
         </div>
         <label class="consent"><input id="agree" type="checkbox" required><span>Saya memastikan data yang diisi benar. Saya memahami bahwa foto selfie ini diambil untuk dokumentasi kegiatan P7 dan hanya digunakan sesuai persetujuan serta kebijakan resmi sekolah.</span></label>
         <button class="submit" id="sendBtn" type="submit">KONFIRMASI KEHADIRAN <span>↗</span></button>
-        <p class="fineprint">DEMO FRONT-END · Data belum dikirim atau disimpan ke server.</p>
+        <p class="fineprint">SYSTEM ONLINE · Data terhubung ke database sekolah.</p>
       </form>
     </div>
     <div class="success" id="successArea">
@@ -316,12 +294,39 @@ form.addEventListener('submit',e=>{
     const name=document.getElementById('fullname').value.trim();
     const cls=document.getElementById('classroom').value;
     const stamp=new Date().toLocaleString('id-ID',{dateStyle:'full',timeStyle:'medium'});
+    
+    // --- KODE UNTUK KIRIM KE SUPABASE ---
+    const SUPABASE_URL = "https://jxzxqirwuufircbiispgs.supabase.co";
+    const SUPABASE_KEY = "sb_publishable_vBM0BKtlqcBNMbDDY7rKWA_86iZ6wb0";
+
+    fetch(SUPABASE_URL + "/rest/v1/absen", {
+      method: 'POST',
+      headers: {
+        'apikey': SUPABASE_KEY,
+        'Authorization': 'Bearer ' + SUPABASE_KEY,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify({
+        nama: name,
+        kelas: cls,
+        waktu: stamp,
+        foto_url: preview.src 
+      })
+    })
+    .then(response => {
+      if (!response.ok) throw new Error('Gagal menyimpan ke database');
+      console.log('Data berhasil dikirim ke Supabase!');
+    })
+    .catch(error => console.error('Error:', error));
+    // ------------------------------------
+
     document.getElementById('receipt').innerHTML=
       'NAMA : <b>'+escapeHTML(name)+'</b><br>'+
       'KELAS : <b>'+escapeHTML(cls)+'</b><br>'+
       'WAKTU : <b>'+escapeHTML(stamp)+'</b><br>'+
       'FOTO : <b>Selfie terlampir</b><br>'+
-      'STATUS : <b style="color:#75f0c0">TERKIRIM (SIMULASI)</b>';
+      'STATUS : <b style="color:#75f0c0">TERKIRIM</b>';
 
     // quote random
     const quotes=[

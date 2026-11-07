@@ -318,9 +318,10 @@ form.addEventListener('submit',e=>{
       if (!response.ok) throw new Error('Gagal menyimpan ke database');
       console.log('Data berhasil dikirim ke Supabase!');
     })
-    .catch(error => console.error('Error:', error));
-    // ------------------------------------
-
+    .catch(error => {
+  console.error('Error:', error);
+  alert('GAGAL KIRIM KE DATABASE!\n\nPesan Error: ' + error.message);
+});
     document.getElementById('receipt').innerHTML=
       'NAMA : <b>'+escapeHTML(name)+'</b><br>'+
       'KELAS : <b>'+escapeHTML(cls)+'</b><br>'+

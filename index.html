@@ -300,27 +300,30 @@ form.addEventListener('submit',e=>{
     const SUPABASE_KEY = "sb_publishable_vBM0BKtlqcBNMbDDY7rKWA_86iZ6wb0";
 
     fetch(SUPABASE_URL + "/rest/v1/absen", {
-      method: 'POST',
-      headers: {
-        'apikey': SUPABASE_KEY,
-        'Authorization': 'Bearer ' + SUPABASE_KEY,
-        'Content-Type': 'application/json',
-        'Prefer': 'return=minimal'
-      },
-      body: JSON.stringify({
-        nama: name,
-        kelas: cls,
-        waktu: stamp,
-        foto_url: preview.src 
-      })
-    })
-    .then(response => {
-      if (!response.ok) throw new Error('Gagal menyimpan ke database');
-      console.log('Data berhasil dikirim ke Supabase!');
-    })
-    .catch(error => {
+  method: 'POST',
+  headers: {
+    'apikey': SUPABASE_KEY,
+    'Authorization': 'Bearer ' + SUPABASE_KEY,
+    'Content-Type': 'application/json',
+    'Prefer': 'return=minimal'
+  },
+  body: JSON.stringify({
+    nama: name,
+    kelas: cls,
+    waktu: stamp,
+    foto_url: "Foto tersimpan di perangkat" // <-- Sementara kita ganti teks dulu
+  })
+})
+.then(response => {
+  if (!response.ok) {
+    return response.text().then(text => { throw new Error('Server bilang: ' + text) });
+  }
+  console.log('Data berhasil dikirim!');
+})
+.catch(error => {
   console.error('Error:', error);
-  alert('GAGAL KIRIM KE DATABASE!\n\nPesan Error: ' + error.message);
+  alert('GAGAL: ' + error.message); // Ini akan memunculkan pesan error yang lebih jelas
+});
 });
     document.getElementById('receipt').innerHTML=
       'NAMA : <b>'+escapeHTML(name)+'</b><br>'+

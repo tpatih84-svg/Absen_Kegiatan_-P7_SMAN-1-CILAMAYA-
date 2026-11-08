@@ -295,36 +295,28 @@ form.addEventListener('submit',e=>{
     const cls=document.getElementById('classroom').value;
     const stamp=new Date().toLocaleString('id-ID',{dateStyle:'full',timeStyle:'medium'});
     
-    // --- KODE UNTUK KIRIM KE SUPABASE ---
-    const SUPABASE_URL = "https://jxzxqirwuufircbiispgs.supabase.co";
-    const SUPABASE_KEY = "sb_publishable_vBM0BKtlqcBNMbDDY7rKWA_86iZ6wb0";
+    // --- KODE UNTUK KIRIM KE GOOGLE SHEETS ---
+    const GAS_URL = "https://script.google.com/macros/s/AKfycbzXxUHMPDyRZ7_VW-YTRJe079Rvl9MqxXlf5cLkx8JZCinHf4npnqQ7P201ztYKMoLI/exec";
 
-    fetch(SUPABASE_URL + "/rest/v1/absen", {
-  method: 'POST',
-  headers: {
-    'apikey': SUPABASE_KEY,
-    'Authorization': 'Bearer ' + SUPABASE_KEY,
-    'Content-Type': 'application/json',
-    'Prefer': 'return=minimal'
-  },
-  body: JSON.stringify({
-    nama: name,
-    kelas: cls,
-    waktu: stamp,
-    foto_url: "Foto tersimpan di perangkat" // <-- Sementara kita ganti teks dulu
-  })
-})
-.then(response => {
-  if (!response.ok) {
-    return response.text().then(text => { throw new Error('Server bilang: ' + text) });
-  }
-  console.log('Data berhasil dikirim!');
-})
-.catch(error => {
-  console.error('Error:', error);
-  alert('GAGAL: ' + error.message); // Ini akan memunculkan pesan error yang lebih jelas
-});
-});
+    fetch(GAS_URL, {
+      method: 'POST',
+      body: JSON.stringify({
+        name: name,
+        class: cls,
+        time: stamp,
+        photo: preview.src 
+      })
+    })
+    .then(response => {
+      if (!response.ok) throw new Error('Gagal menyimpan ke database');
+      console.log('Data berhasil dikirim ke Google Sheets!');
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert('GAGAL KIRIM KE DATABASE!\n\nPesan Error: ' + error.message);
+    });
+    // ------------------------------------
+
     document.getElementById('receipt').innerHTML=
       'NAMA : <b>'+escapeHTML(name)+'</b><br>'+
       'KELAS : <b>'+escapeHTML(cls)+'</b><br>'+
